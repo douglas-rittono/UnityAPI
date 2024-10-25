@@ -20,19 +20,15 @@ public class NetworkService : MonoBehaviour
 
     public static IEnumerator Login(LoginRequest login, TMP_Text txtError)
     {
-        Debug.Log("Passou aqui");
         string jsondata = JsonUtility.ToJson(login);
-        using (UnityWebRequest request = UnityWebRequest.Post("localhost:3001/users/users/login", "POST"))
+        using (UnityWebRequest request = UnityWebRequest.PostWwwForm("localhost:3000/api/users/login", "POST"))
         {
             request.method = UnityWebRequest.kHttpVerbPOST;
             request.SetRequestHeader("Content-Type", "application/json");
             request.SetRequestHeader("Accept", "application/json");
             request.uploadHandler = new UploadHandlerRaw(Encoding.UTF8.GetBytes(jsondata));
 
-            Debug.Log("FAzendo request");
-
             yield return request.SendWebRequest();
-            Debug.Log(request.result);
 
             if (request.result != UnityWebRequest.Result.Success)
             { 

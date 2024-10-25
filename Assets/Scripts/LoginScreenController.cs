@@ -14,7 +14,6 @@ public class LoginScreenController : MonoBehaviour
 
     public void Login()
     {
-        Debug.Log("Passou");
         var login = new LoginRequest
         {
             username = txtUsuario.text,
