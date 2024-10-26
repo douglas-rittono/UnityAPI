@@ -23,5 +23,10 @@ public class LoginScreenController : MonoBehaviour
         coroutine = NetworkService.Login(login, txtError);
         StartCoroutine(coroutine);      
     }
+
+    public void CriarConta()
+    {
+        SceneManager.LoadScene(Resource.Screen.CreateAccount);
+    }
 }
 
